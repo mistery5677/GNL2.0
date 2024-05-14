@@ -4,7 +4,8 @@ int ft_strlen(char *str)
 {
     int i;
     i = 0;
-
+    if(!str)
+        return 0;
     while(str[i])
         i++;
     return i;
@@ -17,14 +18,19 @@ char *ft_strjoin(char *s1, char *s2)
     int j = 0;
 
     i = 0;
-    str = malloc((ft_strlen(s1) + ft_strlen(s2) + 2) * sizeof(char));
+    str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
     if(!str)
         return NULL;
-    while(s1[i])
+    if (!s1)
+    {
+        s1 = NULL;
+    }
+    while(s1[i] && s1)
     {
         str[i] = s1[i];
         i++;
     }
+    
     j = 0;
     while(s2[j])
     {
